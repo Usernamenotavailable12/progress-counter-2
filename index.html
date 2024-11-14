@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Betpool Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="background"></div>
+  <div class="container">
+
+    <div class="table">
+      <div style="padding: 0;" class="row">
+      </div>
+      <div id="rowsContainer"></div>
+    </div>
+  </div>
+  <button id="addRowBtn">დამატება</button>
+  <script src="script.js"></script>
+</body>
+
+</html>
+<style>
+  @font-face {
+    font-family: 'Noto Sans ambassadori Slim';
+    src: url('https://usernamenotavailable12.github.io/Font-Repository/NotoSansAmbassadori-Regular.ttf');
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans ambassadori Slim";
+    font-weight: bold;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+    background: linear-gradient(135deg, #b30254, #0105cc);
+    position: relative;
+  }
+
+  .background {
+    background: url("https://images.takeshape.io/5da2b4d5-59f6-412a-82c3-f6a272b532be/dev/1f7b202a-5fcb-4af3-a6ff-54093bacb99e/BG%20playing.webp") no-repeat center center fixed;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    z-index: -1;
+    filter: blur(10px) brightness(120%);
+  }
+
+  .container {
+    text-align: center;
+    backdrop-filter: blur(6px);
+    max-width: 800px;
+    height: 100%;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #ff00aa;
+    text-shadow: 0px 0px 10px #ff0080;
+  }
+
+  .icon-bar {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .icon {
+    width: 70px;
+    height: 70px;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+
+  .icon:hover {
+    transform: scale(1.1);
+  }
+
+  .table {
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 0px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .row {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    animation: fadeIn 0.3s ease-in;
+    gap: 30px;
+    overflow: hidden;
+  }
+
+  .header {
+    font-weight: bold;
+    border-bottom: 2px solid #555;
+  }
+
+  .cell {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+  }
+
+  input {
+    width: 90%;
+    padding: 5px;
+    font-size: 1rem;
+    text-align: center;
+    border: 1px solid #444;
+    border-radius: 5px;
+    background-color: #2a2d31;
+    color: #fff;
+    box-shadow: inset 0 0 5px #000000;
+  }
+
+  button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #ff227e;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+
+  button:hover {
+    background-color: #ff438b;
+    transform: translateY(-2px);
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  button:is(:not(#addRowBtn)) {
+    margin: auto !important;
+    padding: 5px 10px !important;
+    font-size: .8rem !important;
+    opacity: .5;
+    mix-blend-mode: multiply;
+    &:hover {
+      opacity: .8;
+      mix-blend-mode: normal;
+    }
+
+  }
+  #addRowBtn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  .row {
+    input {
+      background-color: rgb(13, 0, 71, .2);
+      border: solid 2px rgba(26, 1, 138, 0.6);
+      box-shadow: none;
+      &:focus {
+        outline: none;
+      }
+    }
+    }
+    input,
+    .cell {
+      &:nth-child(1) {
+        flex: 0 0 35%;
+        /* 10% of the container's width */
+      }
+
+      &:nth-child(2) {
+        flex: 0 0 10%;
+        /* 40% of the container's width */
+      }
+
+      &:nth-child(3) {
+        flex: 0 0 20%;
+        /* 10% of the container's width */
+      }
+
+      &:nth-child(4) {
+        flex: 0 0 10%;
+        /* 40% of the container's width */
+      }
+    }
+    /*
+    #rowsContainer {
+        .row {
+            &:nth-child(1) {
+                &::before {
+                content: '1';
+                position: relative;
+            }
+            }
+        }
+    }
+  */
+
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+    /* For Firefox */
+  }
+</style>
+<script>
+  // Function to create a new row
+  function createRow(data = {}) {
+    const row = document.createElement('div');
+    row.className = 'row';
+
+    // Field identifiers for storage and retrieval
+    const fields = [
+      { id: 'gameName', placeholder: 'თამაშის სახელი' },
+      { id: 'betAmount', placeholder: 'ფსონის ოდენობა', type: 'number' },
+      { id: 'winAmount', placeholder: 'ჯამური მოგება', type: 'number' },
+      { id: 'multiplier', placeholder: 'ნამრავლი', type: 'number', readonly: true }
+    ];
+
+    const inputs = {}; // To keep track of the inputs for calculation
+
+    fields.forEach(field => {
+      const input = document.createElement('input');
+      input.value = data[field.id] || '';  // Load saved value if available
+      input.placeholder = ` `;
+      input.type = field.type || 'text';
+      if (field.readonly) input.readOnly = true; // Make multiplier readonly
+      input.onchange = saveData;  // Trigger save on input change
+
+      // Store inputs for calculation reference
+      inputs[field.id] = input;
+
+      // Add calculation for multiplier whenever betAmount or winAmount changes
+      if (field.id === 'betAmount' || field.id === 'winAmount') {
+        input.oninput = () => {
+          calculateMultiplier(inputs);
+          saveData(); // Save data after each calculation update
+        };
+      }
+
+      row.appendChild(input);
+    });
+
+    // Add "Remove" button
+    const removeButton = document.createElement('button');
+    removeButton.textContent = 'წაშლა';
+    removeButton.onclick = () => {
+      row.remove();
+      saveData(); // Update saved data after removing a row
+    };
+    row.appendChild(removeButton);
+
+    document.getElementById('rowsContainer').appendChild(row);
+  }
+
+ // Function to calculate multiplier
+function calculateMultiplier(inputs) {
+    const betAmount = parseFloat(inputs['betAmount'].value) || 0;
+    const winAmount = parseFloat(inputs['winAmount'].value) || 0;
+
+    if (betAmount > 0 && winAmount > 0) {
+        const multiplier = winAmount / betAmount;
+        inputs['multiplier'].value = multiplier.toFixed(2); // Update multiplier in the row
+    } else {
+        inputs['multiplier'].value = ''; // Clear the multiplier if either value is missing or zero
+    }
+}
+
+
+  // Function to save data to cookies
+  function saveData() {
+    const rowsData = Array.from(document.querySelectorAll('#rowsContainer .row')).map(row => {
+      const inputs = row.querySelectorAll('input');
+      return {
+        gameName: inputs[0].value,
+        betAmount: inputs[1].value,
+        winAmount: inputs[2].value,
+        multiplier: inputs[3].value
+      };
+    });
+    document.cookie = `betData=${encodeURIComponent(JSON.stringify(rowsData))}; path=/; max-age=31536000`;
+  }
+
+  // Function to load data from cookies
+  function loadData() {
+    const cookie = document.cookie.split('; ').find(row => row.startsWith('betData='));
+    if (!cookie) return;
+    const betData = JSON.parse(decodeURIComponent(cookie.split('=')[1]));
+    betData.forEach(data => createRow(data));
+  }
+
+  // Add initial row and load data from cookies
+  document.getElementById('addRowBtn').onclick = () => createRow();
+  window.onload = loadData;
+
+</script>
