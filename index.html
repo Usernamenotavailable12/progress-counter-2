@@ -44,26 +44,22 @@
     height: 100vh;
     overflow: hidden;
     color: white;
-    background: linear-gradient(135deg, #b30254, #0105cc);
     position: relative;
   }
 
   .background {
-    background: url("https://images.takeshape.io/5da2b4d5-59f6-412a-82c3-f6a272b532be/dev/1f7b202a-5fcb-4af3-a6ff-54093bacb99e/BG%20playing.webp") no-repeat center center fixed;
+    background: rgb(0, 255, 0);
     background-size: cover;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.3;
     z-index: -1;
-    filter: blur(10px) brightness(120%);
   }
 
   .container {
     text-align: center;
-    backdrop-filter: blur(6px);
     max-width: 800px;
     height: 100%;
   }
@@ -99,11 +95,9 @@
 
   .table {
     display: inline-block;
-    background-color: rgba(0, 0, 0, 0.7);
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 0px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
     height: 100%;
     overflow-y: auto;
     margin-left: -60px;
@@ -223,6 +217,7 @@
 
     #rowsContainer {
         .row {
+          font-size: 24px;
             &:nth-child(1) {
                 &::before {
                 content: '1';
